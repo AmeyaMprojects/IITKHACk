@@ -28,15 +28,42 @@ def compute_merkle_root(transactions):
     return current_level[0]
 
 def main():
+    # Read number of test cases
     T = int(input())
+    
+    # Check constraint for T
+    if not (1 <= T <= 10):
+        print("Invalid number of test cases")
+        return
+
     results = []
 
     for _ in range(T):
+        # Read number of transactions
         N = int(input())
-        transactions = [input().strip() for _ in range(N)]
+        
+        # Check constraint for N
+        if not (1 <= N <= 100):
+            print(f"Invalid number of transactions: {N}")
+            return
+
+        transactions = []
+
+        for _ in range(N):
+            transaction = input().strip()
+
+            # Check constraint for the length of each transaction string
+            if not (1 <= len(transaction) <= 100):
+                print(f"Invalid transaction length: {len(transaction)}")
+                return
+            
+            transactions.append(transaction)
+
+        # Compute the Merkle root for this test case
         merkle_root = compute_merkle_root(transactions)
         results.append(merkle_root)
 
+    # Output all results
     for result in results:
         print(result)
 
