@@ -1,11 +1,9 @@
 import hashlib
 
 def sha256(data):
-    """Compute the SHA-256 hash of the given data."""
     return hashlib.sha256(data.encode('utf-8')).hexdigest()
 
 def merkle_root(txs):
-    """Compute the Merkle root of a list of transactions."""
     if not txs:
         return None
 
