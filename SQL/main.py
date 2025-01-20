@@ -11,11 +11,11 @@ def is_sql_injection(payload):
     ]
     return any(re.search(pattern, payload) for pattern in sql_patterns)
 
-file_url = input("Enter the Google Drive file URL: ")
+file_url = input()
 file_id = file_url.split("/d/")[1].split("/")[0]
 download_url = f"https://drive.google.com/uc?id={file_id}&export=download"
 
-response = requests.get(download_url)
+response = requests.get(download_url)   
 response.raise_for_status()
 
 with open("temp.csv", "wb") as f:
